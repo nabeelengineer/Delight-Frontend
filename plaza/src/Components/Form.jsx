@@ -4,6 +4,8 @@ import { MdFileDownloadDone } from "react-icons/md";
 import { MdOutlineLocationOn, MdOutlineMarkEmailRead } from "react-icons/md";
 
 const Form = () => {
+const baseURL = "https://delight-backend-suuw.onrender.com";
+
   const [formData, setFormData] = useState({
     receiptNo: "",
     date: "",
@@ -40,7 +42,7 @@ const Form = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/create", {
+      const response = await fetch(`${baseURL}/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

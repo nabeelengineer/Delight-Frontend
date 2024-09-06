@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaEdit, FaTrash, FaEye, FaTimes } from "react-icons/fa";
 
 const List = () => {
+const baseURL = "https://delight-backend-suuw.onrender.com";
+
   const [items, setItems] = useState([]);
   const [editItemId, setEditItemId] = useState(null);
   const [editItemData, setEditItemData] = useState({
@@ -26,7 +28,7 @@ const List = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch("http://localhost:3000/get");
+        const response = await fetch(`${baseURL}/get`);
         const data = await response.json();
         setItems(data);
       } catch (error) {
@@ -47,7 +49,7 @@ const List = () => {
 
   const handleSave = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/update/${id}`, {
+      const response = await fetch(`${baseURL}/update/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +95,7 @@ const List = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/delete/${id}`, {
+      const response = await fetch(`${baseURL}/delete/${id}`, {
         method: "DELETE",
       });
 
